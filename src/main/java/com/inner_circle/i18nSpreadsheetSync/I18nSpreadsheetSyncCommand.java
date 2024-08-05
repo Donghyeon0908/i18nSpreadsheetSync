@@ -2,7 +2,9 @@ package com.inner_circle.i18nSpreadsheetSync;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class I18nSpreadsheetSyncCommand implements CommandLineRunner {
     private final GoogleSheetsService googleSheetsService;
     private final JsonFileGenerator jsonFileGenerator;
