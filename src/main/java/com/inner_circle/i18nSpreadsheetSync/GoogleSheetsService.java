@@ -7,12 +7,17 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -44,7 +49,20 @@ public class GoogleSheetsService {
             sheetsService = new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
                 JSON_FACTORY, requestInitializer).build();
         }
+
         return sheetsService;
+    }
+
+    public List<List<Object>> getSpreadsheetData() throws IOException, GeneralSecurityException {
+        Sheets service = getSheetsService();
+        String spreadsheetId = properties.getSpreadsheetId();
+        String range = "Sheet1";
+
+        ValueRange response = service.spreadsheets().values()
+            .get(spreadsheetId, range)
+            .execute();
+
+        return response.getValues();
     }
 
 }
