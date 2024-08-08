@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @ConfigurationProperties(prefix = "google.sheets")
 public class GoogleSheetsProperties {
+
     private String spreadsheetId;
-    private String range;
     private String serviceAccountKeyPath;
 }

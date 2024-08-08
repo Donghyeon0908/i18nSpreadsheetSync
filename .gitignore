@@ -9,3 +9,8 @@ HELP.md
 .idea/
 *.iml
 *.iws
+.env
+
+# Ignore service account key file
+service-account-key.json
+

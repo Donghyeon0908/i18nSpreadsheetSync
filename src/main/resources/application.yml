@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: i18nSpreadsheetSync
+
+google:
+  sheets:
+    service-account-key-path: classpath:service-account-key.json
+    spreadsheet-id: ${SPREAD_SHEET_ID}
