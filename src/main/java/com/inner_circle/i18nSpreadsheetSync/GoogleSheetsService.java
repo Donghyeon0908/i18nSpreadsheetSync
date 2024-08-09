@@ -63,7 +63,7 @@ public class GoogleSheetsService {
     public void processSpreadsheetData() throws IOException, GeneralSecurityException {
         Sheets service = getSheetsService();
         String spreadsheetId = properties.getSpreadsheetId();
-        String range = "Sheet1";
+        String range = properties.getSheetName();
 
         ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 

@@ -13,4 +13,5 @@ public class GoogleSheetsProperties {
 
     private String spreadsheetId;
     private String serviceAccountKeyPath;
+    private String sheetName;
 }

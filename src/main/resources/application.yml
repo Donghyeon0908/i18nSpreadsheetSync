@@ -6,5 +6,6 @@ spring:
 
 google:
   sheets:
-    serviceAccountKeyPath: classpath:service-account-key.json
     spreadsheet-id: ${SPREAD_SHEET_ID}
+    sheet-name: 'Sheet1'
+    service-account-key-path: classpath:service-account-key.json
