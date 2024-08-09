@@ -16,11 +16,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class GoogleSheetsService {
 
@@ -30,14 +31,6 @@ public class GoogleSheetsService {
     private final ResourceLoader resourceLoader;
     private final JsonFileGenerator jsonFileGenerator;
 
-
-    @Autowired
-    public GoogleSheetsService(GoogleSheetsProperties properties, ResourceLoader resourceLoader,
-        JsonFileGenerator jsonFileGenerator) {
-        this.properties = properties;
-        this.resourceLoader = resourceLoader;
-        this.jsonFileGenerator = jsonFileGenerator;
-    }
 
     private Sheets getSheetsService() throws GeneralSecurityException, IOException {
         if (sheetsService == null) {

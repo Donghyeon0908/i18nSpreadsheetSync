@@ -1,5 +1,6 @@
 package com.inner_circle.i18nSpreadsheetSync;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,19 +8,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@RequiredArgsConstructor
 @Component
 @Profile("!test")
 public class I18nSpreadsheetSyncCommand implements CommandLineRunner {
 
     private final GoogleSheetsService googleSheetsService;
     private final ApplicationContext applicationContext;
-
-    @Autowired
-    public I18nSpreadsheetSyncCommand(GoogleSheetsService googleSheetsService,
-        ApplicationContext applicationContext) {
-        this.googleSheetsService = googleSheetsService;
-        this.applicationContext = applicationContext;
-    }
 
     @Override
     public void run(String... args) {

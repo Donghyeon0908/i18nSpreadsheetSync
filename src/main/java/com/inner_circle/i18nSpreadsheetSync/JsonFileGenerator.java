@@ -5,17 +5,15 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class JsonFileGenerator {
 
-    private final ObjectMapper objectMapper;
-
-    public JsonFileGenerator() {
-        this.objectMapper = new ObjectMapper();
-        this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // JSON 파일을 읽기 쉽게 포맷팅
-    }
+    private final ObjectMapper objectMapper = new ObjectMapper().enable(
+        SerializationFeature.INDENT_OUTPUT);
 
     public void generateJsonFiles(Map<String, Map<String, String>> translations)
         throws IOException {
