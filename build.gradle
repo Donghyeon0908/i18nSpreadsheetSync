@@ -15,6 +15,10 @@ java {
     }
 }
 
+tasks.named('bootJar') {
+    archiveFileName = 'i18nSpreadsheetSync-1.0.0.jar'
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
