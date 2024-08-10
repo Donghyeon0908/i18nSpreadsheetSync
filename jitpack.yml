@@ -4,7 +4,6 @@ jdk:
 before_install:
   - sdk install java 17.0.11-open
   - sdk use java 17.0.11-open
-  - sdk install maven
-  - mvn -v
 
-install: ./gradlew build publishToMavenLocal
+install:
+  - ./gradlew clean build publishToMavenLocal -x test

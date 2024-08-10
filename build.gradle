@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.google.auth:google-auth-library-oauth2-http:1.24.0'
     implementation 'com.google.http-client:google-http-client-jackson2:1.44.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+
 }
 
 tasks.named('test') {
@@ -48,12 +49,19 @@ tasks.named('test') {
 }
 
 jar {
+    enabled = false
     manifest {
         attributes(
                 'Main-Class': 'com.inner_circle.i18nSpreadsheetSync.I18nSpreadsheetSyncApplication'
         )
     }
 }
+
+bootJar {
+    enabled = true
+    mainClassName = 'com.inner_circle.i18nSpreadsheetSync.I18nSpreadsheetSyncApplication'
+}
+
 
 publishing {
     publications {
@@ -62,6 +70,7 @@ publishing {
             artifactId = 'i18nSpreadsheetSync'
             version = '1.0.0'
             from components.java
+            artifact bootJar
         }
     }
 }
