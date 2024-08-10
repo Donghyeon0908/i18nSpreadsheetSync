@@ -48,18 +48,16 @@ tasks.named('test') {
 
 }
 
+springBoot {
+    mainClass = 'com.inner_circle.i18nSpreadsheetSync.I18nSpreadsheetSyncApplication'
+}
+
 jar {
     enabled = false
-    manifest {
-        attributes(
-                'Main-Class': 'com.inner_circle.i18nSpreadsheetSync.I18nSpreadsheetSyncApplication'
-        )
-    }
 }
 
 bootJar {
     enabled = true
-    mainClassName = 'com.inner_circle.i18nSpreadsheetSync.I18nSpreadsheetSyncApplication'
 }
 
 
