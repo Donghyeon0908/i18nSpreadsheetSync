@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.inner-circle'
-version = '1.0.0'
+version = '1.0.3'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -66,7 +66,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'com.inner-circle'
             artifactId = 'i18nSpreadsheetSync'
-            version = '1.0.0'
+            version = '1.0.3'
             from components.java
             artifact bootJar
         }
