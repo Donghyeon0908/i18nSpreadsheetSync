@@ -14,7 +14,7 @@ Google API Setup:
 Create a service account in Google Cloud Platform and download the service account key file (.json).
 
 Configure Your Application:
-Set up the Google Sheets API key and spreadsheet ID in your application.yml or application.properties file.
+Set up the Google Sheets API key and spreadsheet ID, spreadsheetName in your application.yml or application.properties file.
 ```
 google:
   sheets:
