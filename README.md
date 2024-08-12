@@ -5,7 +5,7 @@
 You can add this library as a dependency in your Gradle project. Include the following in your build.gradle file:
 ```
 dependencies {
-implementation 'com.inner_circle:i18n-spreadsheet-sync:1.0.3'(change the version number to the latest version)
+implementation 'com.github.Donghyeon0908:i18nSpreadsheetSync:1.0.3'(change the version number to the latest version)
 }
 ```
 
