@@ -12,9 +12,7 @@ import java.util.List;
 @SpringBootApplication
 public class I18nSpreadsheetSyncApplication {
 
-
     public static void main(String[] args) {
         SpringApplication.run(I18nSpreadsheetSyncApplication.class, args);
     }
-
 }

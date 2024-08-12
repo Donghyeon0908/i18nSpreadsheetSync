@@ -17,19 +17,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class GoogleSheetsService {
 
     private final GoogleSheetsProperties properties;
-    private Sheets sheetsService;
-    private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     private final ResourceLoader resourceLoader;
     private final JsonFileGenerator jsonFileGenerator;
+
+    private Sheets sheetsService;
+    private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
 
 
     private Sheets getSheetsService() throws GeneralSecurityException, IOException {
@@ -41,7 +44,7 @@ public class GoogleSheetsService {
                 credentials = ServiceAccountCredentials.fromStream(serviceAccountStream)
                     .createScoped(Collections.singleton(SheetsScopes.SPREADSHEETS));
             } catch (IOException e) {
-                System.err.println("Error loading service account key: " + e.getMessage());
+                log.error("Error loading service account key: {}", e.getMessage());
                 throw e;
             }
             HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials);
@@ -62,7 +65,7 @@ public class GoogleSheetsService {
 
         List<List<Object>> values = response.getValues();
         if (values == null || values.isEmpty()) {
-            System.out.println("No Data");
+            log.warn("No Data");
             return;
         }
 
